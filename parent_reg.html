@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+    <div class="registration-container">
+        <h1>Parent Registration</h1>
+        <form id="parent-register-form" action="register_parent.php" method="POST">
+            <label for="parent-id">Parent ID:</label>
+            <input type="text" id="parent-id" name="parent-id" required><br><br>
+
+            <label for="parent-name">Parent Name:</label>
+            <input type="text" id="parent-name" name="parent-name" required><br><br>
+
+            <label for="parent-email">Parent Email:</label>
+            <input type="email" id="parent-email" name="parent-email" required><br><br>
+
+            <label for="child-name">Child's Full Name:</label>
+            <input type="text" id="child-name" name="child-name" required><br><br>
+
+            <label for="child-location">Child's Location:</label>
+            <div id="map" style="height: 400px; width: 100%;"></div>
+            <input type="hidden" id="child-location" name="child-location" required><br><br>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
