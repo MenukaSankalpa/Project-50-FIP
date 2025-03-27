@@ -25,8 +25,8 @@
     </form>
 
     <script>
-        document.getElementById("registerForm").addEventListener ("submit", function(event) {
-            event.preventDefault();
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
 
             let formData = new FormData(this);
 
@@ -34,15 +34,18 @@
                 method: "POST",
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
+            .then(response => response.text()) // Get raw response first
+            .then(text => {
+                console.log("Server Response:", text); // Log raw response
+                let data = JSON.parse(text); // Convert to JSON
                 Swal.fire(data.status, data.message, data.type);
-            }).then(() => {
+                
                 if (data.type === "success") {
-                    document.getElementById("registerFrom").reset();
+                    document.getElementById("registerForm").reset();
                 }
             })
             .catch(error => {
+                console.error("Fetch Error:", error);
                 Swal.fire("Error", "Something went wrong!", "error");
             });
         });
